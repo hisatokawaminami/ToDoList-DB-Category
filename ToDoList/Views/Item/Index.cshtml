@@ -1,8 +1,34 @@
-<h1>To Do List</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WHOLE WORLD!</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  </head>
+  <!DOCTYPE html>
+  <html>
+  <h1>To Do List</h1>
+  <table class="table table-hover table-danger">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">DueDate</th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach(var items in Model)
+  {
+    <tr>
+      <td>@items.GetDescription()</td>
+      <td>@items.GetDueDate()</td>
+    </tr>
+  }
+  </tbody>
+</table>
+
 <ul>
-@foreach(var items in Model)
+<!-- @foreach(var items in Model)
 {
-  <li>@items.GetDescription()</li>
+  <li>@items.GetDescription() is due @items.GetDueDate()</li>
 }
-</ul>
-<a href="/items/new">Add a new item.</a>
+</ul> -->
+<a href="/items/new" class="btn btn-success">Add a new item.</a><br>

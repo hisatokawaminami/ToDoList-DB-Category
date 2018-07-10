@@ -6,11 +6,18 @@ namespace ToDoList.Controllers
 {
   public class ItemController : Controller
   {
+    [HttpPost("/items")]
+    public ActionResult CollectInfo()
+    {
+      Item newItem = new Item(Request.Form["new-item"], Request.Form["new-date"]);
+      newItem.Save();
+      // List<Item> all = Item.GetAll();
+      return RedirectToAction("Index");
+    }
+
     [HttpGet("/items")]
     public ActionResult Index()
     {
-      Item newItem = new Item(Request.Query["new-item"]);
-      newItem.Save();
       // List<Item> all = Item.GetAll();
       return View(Item.GetAll());
     }
@@ -20,5 +27,6 @@ namespace ToDoList.Controllers
     {
       return View();
     }
+
   }
 }

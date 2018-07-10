@@ -9,11 +9,13 @@ namespace ToDoList.Models
   {
     private int _id;
     private string _description;
+    private string _dueDate;
 
-    public Item (string Description, int Id = 0)
+    public Item (string Description, string DueDate, int Id = 0)
     {
       _id = Id;
       _description = Description;
+      _dueDate = DueDate;
     }
 
     public override bool Equals(System.Object otherItem)
@@ -27,6 +29,7 @@ namespace ToDoList.Models
         Item newItem = (Item) otherItem;
         bool idEquality = (this.GetId() == newItem.GetId());
         bool descriptionEquality = (this.GetDescription() == newItem.GetDescription());
+        bool dueDateEquality = (this.GetDueDate() == newItem.GetDueDate());
         return (idEquality && descriptionEquality);
       }
     }
@@ -49,18 +52,28 @@ namespace ToDoList.Models
       return _id;
     }
 
+    public string GetDueDate()
+    {
+      return _dueDate;
+    }
+
     public void Save()
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
 
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO items (description) VALUES (@ItemDescription);";
+      cmd.CommandText = @"INSERT INTO items (description, duedate) VALUES (@ItemDescription, @ItemDueDate);";
 
       MySqlParameter description = new MySqlParameter();
       description.ParameterName = "@ItemDescription";
       description.Value = this._description;
       cmd.Parameters.Add(description);
+
+      MySqlParameter duedate = new MySqlParameter();
+      duedate.ParameterName = "@ItemDueDate";
+      duedate.Value = this._dueDate;
+      cmd.Parameters.Add(duedate);
 
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
@@ -106,14 +119,15 @@ namespace ToDoList.Models
 
       int itemId = 0;
       string itemDescription = "";
-
+      string itemDueDate = "";
       while (rdr.Read())
       {
         itemId = rdr.GetInt32(0);
         itemDescription = rdr.GetString(1);
+        itemDueDate = rdr.GetString(2);
       }
 
-      Item foundItem = new Item(itemDescription, itemId);
+      Item foundItem = new Item(itemDescription, itemDueDate, itemId);
 
       conn.Close();
       if (conn != null)
@@ -135,7 +149,12 @@ namespace ToDoList.Models
       {
         int itemId = rdr.GetInt32(0);
         string itemDescription = rdr.GetString(1);
-        Item newItem = new Item(itemDescription, itemId);
+        string itemDueDate = "";
+        if(!rdr.IsDBNull(2))
+        {
+          itemDueDate = rdr.GetString(2);
+        }
+        Item newItem = new Item(itemDescription, itemDueDate, itemId);
         allItems.Add(newItem);
       }
       conn.Close();
