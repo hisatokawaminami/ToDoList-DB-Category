@@ -16,7 +16,6 @@ namespace ToDoList.Tests
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=todo_test;";
     }
-
     [TestMethod]
     public void GetAll_DbStartsEmpty_0()
     {
@@ -31,8 +30,8 @@ namespace ToDoList.Tests
     public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Item()
     {
       //Arrange, Action
-      Item firstItem = new Item("Mow the lawn");
-      Item secondItem = new Item("Mow the lawn");
+      Item firstItem = new Item("Mow the lawn", "Now");
+      Item secondItem = new Item("Mow the lawn", "Now");
 
       //Assert
       Assert.AreEqual(firstItem, secondItem);
@@ -42,7 +41,7 @@ namespace ToDoList.Tests
     public void Save_SavesToDatabase_ItemList()
     {
       //Arrange
-      Item testItem = new Item("Mow the lawn");
+      Item testItem = new Item("Mow the lawn", "Now");
 
       //Act
       testItem.Save();
@@ -57,7 +56,7 @@ namespace ToDoList.Tests
     public void Save_AssignsIdToObject_Id()
     {
       //Arrange
-      Item testItem = new Item("Mow the lawn");
+      Item testItem = new Item("Mow the lawn", "Now");
 
       //Act
       testItem.Save();
@@ -73,7 +72,7 @@ namespace ToDoList.Tests
     public void Find_FindsItemInDatabase_Item()
     {
       //Arrange
-      Item testItem = new Item("Mow the lawn");
+      Item testItem = new Item("Mow the lawn", "now");
       testItem.Save();
 
       //Act
@@ -82,5 +81,23 @@ namespace ToDoList.Tests
       //Assert
       Assert.AreEqual(testItem, foundItem);
     }
+    [TestMethod]
+    public void Edit_UpdatesItemInDatabase_String()
+    {
+      //Arrange
+      string firstDescription = "Walk the Dog";
+      string dueDate = "now";
+      Item testItem = new Item(firstDescription, dueDate, 1);
+      testItem.Save();
+      string secondDescription = "Mow the lawn";
+
+      //Act
+      testItem.Edit(secondDescription);
+
+      string result = Item.Find(testItem.GetId()).GetDescription();
+
+      //Assert
+      Assert.AreEqual(secondDescription, result);
+ }
   }
 }

@@ -28,5 +28,12 @@ namespace ToDoList.Controllers
       return View();
     }
 
+    [HttpGet("/items/{id}/update")]
+    public ActionResult UpdateForm(int id)
+    {
+      Item thisItem = Item.Find(id);
+      return View(thisItem);
+    }
+
   }
 }
