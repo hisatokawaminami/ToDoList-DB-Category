@@ -1,0 +1,7 @@
+<h1>To Do List</h1>
+<h2>Edit Description: @Model.GetDescription()</h2>
+<h3>Are You SURE YOU WANT TO DELLLETE??</h3>
+<form action="/items/@Model.GetId()/Delete" method="post">
+    <button type="submit">Yes, Delete</button>
+</form>
+<h4><a href="/items">Return home</a></h4>

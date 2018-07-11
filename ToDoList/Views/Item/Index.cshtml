@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WHOLE WORLD!</title>
+    <title>To DO List!</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
   </head>
   <!DOCTYPE html>
@@ -18,7 +18,8 @@
   @foreach(var items in Model)
   {
     <tr>
-      <td>@items.GetDescription() | <ahref="/items/@items.GetId()/update">Edit</a></td>
+      <td>@items.GetDescription() | <a href="/items/@items.GetId()/update">Edit</a> | <a href="/items/@items.GetId()/delete">Delete</a>
+      </td>
       <td>@items.GetDueDate()</td>
     </tr>
   }

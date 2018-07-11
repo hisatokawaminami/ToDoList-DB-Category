@@ -98,6 +98,26 @@ namespace ToDoList.Tests
 
       //Assert
       Assert.AreEqual(secondDescription, result);
- }
+    }
+    [TestMethod]
+    public void Delete_A_Specific_ITEM()
+    {
+      //Arrange
+      Item newItem1 = new Item("Eat dinner", "today");
+      newItem1.Save();
+      Item newItem2 = new Item("Walk the dog", "tomorrow");
+      newItem2.Save();
+      Assert.IsTrue(Item.GetAll().Count == 2);
+
+      //Act
+      newItem1.Delete();
+      List<Item> expectedList = new List<Item> {newItem2};
+      // Console.WriteLine(newItem1.GetDescription());
+
+      //Assert
+      List<Item> outputList = Item.GetAll();
+      Assert.IsTrue(outputList.Count == 1);
+      CollectionAssert.AreEqual(expectedList, outputList);
+    }
   }
 }
