@@ -9,7 +9,7 @@ namespace ToDoList.Controllers
     [HttpPost("/items")]
     public ActionResult CollectInfo()
     {
-      Item newItem = new Item(Request.Form["new-item"], Request.Form["new-date"]);
+      Item newItem = new Item(Request.Form["new-item"], Request.Form["new-date"], Category.GetId());
       newItem.Save();
       // List<Item> all = Item.GetAll();
       return RedirectToAction("Index");
