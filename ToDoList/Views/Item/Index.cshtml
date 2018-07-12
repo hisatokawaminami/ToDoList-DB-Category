@@ -4,25 +4,27 @@
     <title>To DO List!</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
   </head>
-  <!DOCTYPE html>
-  <html>
   <h1>To Do List</h1>
   <table class="table table-hover table-danger">
   <thead>
     <tr>
       <th scope="col">Description</th>
       <th scope="col">DueDate</th>
+      <th scope="col">Category</th>
     </tr>
   </thead>
   <tbody>
+
   @foreach(var items in Model)
   {
-    <tr>
+<tr>
       <td>@items.GetDescription() | <a href="/items/@items.GetId()/update">Edit</a> | <a href="/items/@items.GetId()/delete">Delete</a>
       </td>
       <td>@items.GetDueDate()</td>
-    </tr>
+      <td>@items.GetCategoryId()</td>
+</tr>
   }
+
   </tbody>
 </table>
 
@@ -33,3 +35,4 @@
 }
 </ul> -->
 <a href="/items/new" class="btn btn-success">Add a new item.</a><br>
+</html>

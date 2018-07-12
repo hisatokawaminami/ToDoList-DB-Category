@@ -7,9 +7,9 @@ namespace ToDoList.Controllers
   public class ItemController : Controller
   {
     [HttpPost("/items")]
-    public ActionResult CollectInfo()
+    public ActionResult CollectInfo(string newitem, string newdate, int category)
     {
-      Item newItem = new Item(Request.Form["new-item"], Request.Form["new-date"], Category.GetId());
+      Item newItem = new Item(newitem, newdate, category);
       newItem.Save();
       // List<Item> all = Item.GetAll();
       return RedirectToAction("Index");
@@ -25,7 +25,7 @@ namespace ToDoList.Controllers
     [HttpGet("/items/new")]
     public ActionResult CreateForm()
     {
-      return View();
+      return View(Category.GetAll());
     }
 
     [HttpGet("/items/{id}/update")]

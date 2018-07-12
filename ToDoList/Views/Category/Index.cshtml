@@ -1,0 +1,8 @@
+<h1>CATEGORIES</h1>
+<ul>
+@foreach(var categories in Model)
+{
+  <li>@categories.GetName() || <a href="/categories/@categories.GetId()/items/">Whats inside?</a></li>
+}
+</ul>
+<a href="/categories/new">Add Another Category</a>

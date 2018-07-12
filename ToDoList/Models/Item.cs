@@ -83,9 +83,9 @@ namespace ToDoList.Models
       duedate.Value = this._dueDate;
       cmd.Parameters.Add(duedate);
 
-      MySqlParameter categoryid = new MySqlParameter();
-      duedate.ParameterName = "@ItemCategoryId";
-      duedate.Value = this._categoryId;
+      MySqlParameter category_id = new MySqlParameter();
+      category_id.ParameterName = "@ItemCategoryId";
+      category_id.Value = this._categoryId;
       cmd.Parameters.Add(category_id);
 
 

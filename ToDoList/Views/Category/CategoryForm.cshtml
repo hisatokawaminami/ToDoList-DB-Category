@@ -1,0 +1,13 @@
+<h1>Create a new Category</h1>
+<form action="/categories" method="post">
+  <label for="new-category">Add a new Category</label>
+  <input id="new-category" name="new-category" type="text">
+  <button type="submit">Submit</button>
+</form>
+<ul>
+@foreach(var categories in Model)
+{
+  <li>@categories.GetName()</li>
+}
+</ul>
+<a href="/">Go Back</a>

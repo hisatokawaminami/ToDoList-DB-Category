@@ -1,0 +1,8 @@
+<h1>Category: @Model.GetName()</h1>
+
+<ul>
+  @foreach(var item in Model.GetItems())
+  {
+    <li>@item.GetDescription()</li>
+  }
+</ul>

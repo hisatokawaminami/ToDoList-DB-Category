@@ -90,6 +90,7 @@ namespace ToDoList.Tests
 
       List<Item> testItemList = new List<Item> {firstItem, secondItem};
       List<Item> resultItemList = testCategory.GetItems();
+    
 
       CollectionAssert.AreEqual(testItemList, resultItemList);
     }
