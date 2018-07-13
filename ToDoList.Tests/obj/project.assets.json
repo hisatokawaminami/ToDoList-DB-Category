@@ -10799,22 +10799,22 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Guest/Desktop/ToDoListDatabase/ToDoList.Tests/ToDoList.Tests.csproj",
+      "projectUniqueName": "/Users/Guest/Desktop/ToDoListDatabase1/ToDoList.Tests/ToDoList.Tests.csproj",
       "projectName": "ToDoList.Tests",
-      "projectPath": "/Users/Guest/Desktop/ToDoListDatabase/ToDoList.Tests/ToDoList.Tests.csproj",
-      "outputPath": "/Users/Guest/Desktop/ToDoListDatabase/ToDoList.Tests/obj/",
+      "projectPath": "/Users/Guest/Desktop/ToDoListDatabase1/ToDoList.Tests/ToDoList.Tests.csproj",
+      "outputPath": "/Users/Guest/Desktop/ToDoListDatabase1/ToDoList.Tests/obj/",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
       "files": {
-        "lib/netcoreapp1.1/ToDoList.Tests.dll": "/Users/Guest/Desktop/ToDoListDatabase/ToDoList.Tests/bin/placeholder/netcoreapp1.1/ToDoList.Tests.dll"
+        "lib/netcoreapp1.1/ToDoList.Tests.dll": "/Users/Guest/Desktop/ToDoListDatabase1/ToDoList.Tests/bin/placeholder/netcoreapp1.1/ToDoList.Tests.dll"
       },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "/Users/Guest/Desktop/ToDoListDatabase/ToDoList/ToDoList.csproj": {
-              "projectPath": "/Users/Guest/Desktop/ToDoListDatabase/ToDoList/ToDoList.csproj"
+            "/Users/Guest/Desktop/ToDoListDatabase1/ToDoList/ToDoList.csproj": {
+              "projectPath": "/Users/Guest/Desktop/ToDoListDatabase1/ToDoList/ToDoList.csproj"
             }
           }
         }

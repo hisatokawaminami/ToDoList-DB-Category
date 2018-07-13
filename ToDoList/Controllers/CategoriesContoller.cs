@@ -33,7 +33,7 @@ namespace ToDoList.Controllers
       Category thisCategory = Category.Find(id);
 
       List<Item> allItems = thisCategory.GetItems();
-      return View(thisCategory);
+      return View(this);
     }
 
   }
